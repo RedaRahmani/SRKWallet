@@ -1,0 +1,10 @@
+/home/reda37/SRKWallet/solana-wallet/target/release/deps/libspl_token_group_interface-6df2e3890753afb1.so: /home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/lib.rs /home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/error.rs /home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/instruction.rs /home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/state.rs
+
+/home/reda37/SRKWallet/solana-wallet/target/release/deps/libspl_token_group_interface-6df2e3890753afb1.rlib: /home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/lib.rs /home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/error.rs /home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/instruction.rs /home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/state.rs
+
+/home/reda37/SRKWallet/solana-wallet/target/release/deps/spl_token_group_interface-6df2e3890753afb1.d: /home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/lib.rs /home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/error.rs /home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/instruction.rs /home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/state.rs
+
+/home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/lib.rs:
+/home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/error.rs:
+/home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/instruction.rs:
+/home/reda37/.cargo/registry/src/index.crates.io-6f17d22bba15001f/spl-token-group-interface-0.1.0/src/state.rs:
