@@ -3885,6 +3885,8 @@ version = "0.1.0"
 dependencies = [
  "chrono",
  "clap 4.5.18",
+ "serde",
+ "serde_json",
  "solana-client",
  "solana-sdk",
  "tiny-bip39",

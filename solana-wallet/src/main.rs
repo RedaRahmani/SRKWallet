@@ -17,6 +17,7 @@ use std::{
     str::FromStr,
 };
 use std::{thread, time};
+use serde_json::Value;
 
 #[derive(Parser)]
 #[clap(author, version, about, long_about=None)]
@@ -156,7 +157,14 @@ fn airdrop_sol(address: &str, sol: f64, client: &RpcClient) {
     }
 }
 
-fn transfer_sol(client: &RpcClient, keypair: &Keypair, to_key: &str, sol_amount: f64) {
+fn transfer_sol(client: &RpcClient, keypair: &Keypair, to_key: &str, sol_amount: f64,  vulnerabilities: &Value) {
+
+    // Check for vulnerabilities
+    if check_vulnerabilities(to_key, vulnerabilities) {
+        println!("Transaction halted due to detected vulnerabilities.");
+        return;
+    }
+
     let to_pubkey = Pubkey::from_str(to_key).unwrap();
     let lamports = sol_to_lamports(sol_amount);
     let transfer_instruction =
@@ -193,9 +201,27 @@ fn transfer_sol(client: &RpcClient, keypair: &Keypair, to_key: &str, sol_amount:
     }
 }
 
+fn load_vulnerabilities(json_file_path: &str) -> Value {
+    let file = std::fs::File::open(json_file_path).expect("Failed to open vulnerabilities file.");
+    let vulnerabilities: Value = serde_json::from_reader(file).expect("Failed to parse JSON file.");
+    vulnerabilities
+}
+
+fn check_vulnerabilities(address: &str, vulnerabilities: &Value) -> bool {
+    for item in vulnerabilities["Data Analytics"].as_array().unwrap() {
+        if item["Smart contract address"] == address {
+            println!("Warning: Vulnerabilities found for address {}.", address);
+            println!("Risks: {:?}", item["Summary/rationale of risk tags marked true"]);
+            return true;  // Vulnerability found
+        }
+    }
+    false  // No vulnerabilities found
+}
+
 fn main() {
     let cli = Cli::parse();
     let client = RpcClient::new(SERVER_URL);
+    let vulnerabilities = load_vulnerabilities("/home/reda37/SRKWallet/solana-wallet/src/compiled_risk_data.json");
 
     match &cli.command {
         Some(Commands::ClusterInfo) => {
@@ -238,7 +264,7 @@ fn main() {
         }) => {
             let keypair = read_keypair_file(from_wallet).unwrap();
             println!("Transfer {} SOL from {} to {}", sol, &keypair.pubkey(), to);
-            transfer_sol(&client, &keypair, to, *sol);
+            transfer_sol(&client, &keypair, to, *sol, &vulnerabilities);
         }
         None => {
             println!("No command provided.");
